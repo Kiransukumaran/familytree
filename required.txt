@@ -1,0 +1,15 @@
+Name
+mob no
+email
+gender
+cur address
+perm addr
+father Name with pic
+mother Name with pic
+dob
+marriage status
+if ms ? hus/spou name;
+profession
+pic
+children (if any with pic)
+

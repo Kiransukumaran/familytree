@@ -1,0 +1,147 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+    <label>
+        Name:
+    </label>
+    <br>
+    <input type="text" formControlName="name">
+
+    <br>
+    <label>
+        Mobile Number:
+    </label>
+    <br>
+    <input type="text" formControlName="mobileNumber">
+
+    <br>
+    <label>
+        Email:
+    </label>
+    <br>
+    <input type="email" formControlName="email">
+
+    <br>
+    <label>Gender</label>
+    <br>
+    <label>
+        <input type="radio" value="Male" formControlName="gender">
+        <span>Male</span>
+    </label>
+
+    <label>
+        <input type="radio" value="Female" formControlName="gender">
+        <span>Female</span>
+    </label>
+
+    <br>
+    <label>
+        Profession:
+    </label>
+    <br>
+    <input type="text" formControlName="profession">
+
+    <div formGroupName="address">
+        <h3>Address</h3>
+
+        <label>
+            House Name:
+        </label>
+        <br>
+        <input type="text" formControlName="houseName">
+
+        <br>
+        <label>
+            Street:
+        </label>
+        <br>
+        <input type="text" formControlName="street">
+
+        <br>
+        <label>
+            City:
+        </label>
+        <br>
+        <input type="text" formControlName="city">
+
+        <br>
+        <label>
+            State:
+        </label>
+        <br>
+        <input type="text" formControlName="state">
+
+        <br>
+        <label>
+            Zip Code:
+        </label>
+        <br>
+        <input type="text" formControlName="zip">
+    </div>
+
+    <label>
+        Maritial Status:
+    </label>
+    <br>
+    <select formControlName="maritialStatus">
+        <option>Single</option>
+        <option>Married</option>
+        <option>Divorced</option>
+    </select>
+    <div *ngIf="this.profileForm.value.maritialStatus != 'Single' && this.profileForm.value.maritialStatus != ''"
+        formGroupName="maritialDetails">
+        <ng-container *ngIf="this.profileForm.value.gender == 'Male'; else elseTemplate">
+            <label>
+                Wife Name:
+            </label>
+            <br>
+            <input type="text" formControlName="partnerName">
+        </ng-container>
+        <ng-template #elseTemplate>
+            <label>
+                Husband Name:
+            </label>
+            <br>
+            <input type="text" formControlName="partnerName">
+        </ng-template>
+
+        <br>
+        <label>
+            Email:
+        </label>
+        <br>
+        <input type="text" formControlName="partnerEmail">
+
+        <br>
+        <label>
+            Mobile Number:
+        </label>
+        <br>
+        <input type="text" formControlName="partnerMobileNumber">
+
+    </div>
+
+    <div formGroupName="referer">
+        <br>
+        <label>
+            Referer Name:
+        </label>
+        <br>
+        <input type="text" formControlName="refererName">
+
+        <br>
+        <label>
+            Referer Mobile Number:
+        </label>
+        <br>
+        <input type="text" formControlName="refererMobileNumber">
+
+        <br>
+        <label>
+            Referer Relationship:
+        </label>
+        <br>
+        <input type="text" formControlName="refererRelationship">
+    </div>
+
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+</form>
